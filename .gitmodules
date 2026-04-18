@@ -14,3 +14,6 @@
 [submodule "external/gtest"]
 	path = external/gtest
 	url = https://github.com/google/googletest.git
+[submodule "external/evmone"]
+	path = external/evmone
+	url = https://github.com/ethereum/evmone
