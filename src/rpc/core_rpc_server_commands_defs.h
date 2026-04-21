@@ -2791,4 +2791,88 @@ inline const std::string get_rpc_status(const bool trusted_daemon, const std::st
     typedef epee::misc_utils::struct_init<response_t> response;
   };
 
+
+  struct COMMAND_RPC_GHOST_DEPLOY_CONTRACT
+  {
+    struct request_t: public rpc_request_base
+    {
+      std::string sender;
+      std::string bytecode;
+      uint64_t gas_limit;
+      BEGIN_KV_SERIALIZE_MAP()
+        KV_SERIALIZE_PARENT(rpc_request_base)
+        KV_SERIALIZE(sender)
+        KV_SERIALIZE(bytecode)
+        KV_SERIALIZE(gas_limit)
+      END_KV_SERIALIZE_MAP()
+    };
+    typedef epee::misc_utils::struct_init<request_t> request;
+    struct response_t: public rpc_response_base
+    {
+      std::string contract_address;
+      std::string status;
+      BEGIN_KV_SERIALIZE_MAP()
+        KV_SERIALIZE_PARENT(rpc_response_base)
+        KV_SERIALIZE(contract_address)
+        KV_SERIALIZE(status)
+      END_KV_SERIALIZE_MAP()
+    };
+    typedef epee::misc_utils::struct_init<response_t> response;
+  };
+
+  struct COMMAND_RPC_GHOST_CALL_CONTRACT
+  {
+    struct request_t: public rpc_request_base
+    {
+      std::string sender;
+      std::string contract_address;
+      std::string data;
+      uint64_t gas_limit;
+      BEGIN_KV_SERIALIZE_MAP()
+        KV_SERIALIZE_PARENT(rpc_request_base)
+        KV_SERIALIZE(sender)
+        KV_SERIALIZE(contract_address)
+        KV_SERIALIZE(data)
+        KV_SERIALIZE(gas_limit)
+      END_KV_SERIALIZE_MAP()
+    };
+    typedef epee::misc_utils::struct_init<request_t> request;
+    struct response_t: public rpc_response_base
+    {
+      std::string result;
+      std::string status;
+      BEGIN_KV_SERIALIZE_MAP()
+        KV_SERIALIZE_PARENT(rpc_response_base)
+        KV_SERIALIZE(result)
+        KV_SERIALIZE(status)
+      END_KV_SERIALIZE_MAP()
+    };
+    typedef epee::misc_utils::struct_init<response_t> response;
+  };
+
+  struct COMMAND_RPC_GHOST_GET_BALANCE
+  {
+    struct request_t: public rpc_request_base
+    {
+      std::string contract_address;
+      std::string address;
+      BEGIN_KV_SERIALIZE_MAP()
+        KV_SERIALIZE_PARENT(rpc_request_base)
+        KV_SERIALIZE(contract_address)
+        KV_SERIALIZE(address)
+      END_KV_SERIALIZE_MAP()
+    };
+    typedef epee::misc_utils::struct_init<request_t> request;
+    struct response_t: public rpc_response_base
+    {
+      uint64_t balance;
+      std::string status;
+      BEGIN_KV_SERIALIZE_MAP()
+        KV_SERIALIZE_PARENT(rpc_response_base)
+        KV_SERIALIZE(balance)
+        KV_SERIALIZE(status)
+      END_KV_SERIALIZE_MAP()
+    };
+    typedef epee::misc_utils::struct_init<response_t> response;
+  };
 }

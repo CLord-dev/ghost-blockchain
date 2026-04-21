@@ -188,6 +188,9 @@ namespace cryptonote
         MAP_JON_RPC_WE_IF("rpc_access_tracking", on_rpc_access_tracking,        COMMAND_RPC_ACCESS_TRACKING, !m_restricted)
         MAP_JON_RPC_WE_IF("rpc_access_data",     on_rpc_access_data,            COMMAND_RPC_ACCESS_DATA, !m_restricted)
         MAP_JON_RPC_WE_IF("rpc_access_account",  on_rpc_access_account,         COMMAND_RPC_ACCESS_ACCOUNT, !m_restricted)
+        MAP_JON_RPC_WE("ghost_deploy_contract",  on_ghost_deploy_contract,      COMMAND_RPC_GHOST_DEPLOY_CONTRACT)
+        MAP_JON_RPC_WE("ghost_call_contract",     on_ghost_call_contract,        COMMAND_RPC_GHOST_CALL_CONTRACT)
+        MAP_JON_RPC_WE("ghost_get_balance",       on_ghost_get_balance,          COMMAND_RPC_GHOST_GET_BALANCE)
       END_JSON_RPC_MAP()
     END_URI_MAP2()
 
@@ -267,6 +270,10 @@ namespace cryptonote
     bool on_rpc_access_data(const COMMAND_RPC_ACCESS_DATA::request& req, COMMAND_RPC_ACCESS_DATA::response& res, epee::json_rpc::error& error_resp, const connection_context *ctx = NULL);
     bool on_rpc_access_account(const COMMAND_RPC_ACCESS_ACCOUNT::request& req, COMMAND_RPC_ACCESS_ACCOUNT::response& res, epee::json_rpc::error& error_resp, const connection_context *ctx = NULL);
     //-----------------------
+    // Ghost contract RPC
+    bool on_ghost_deploy_contract(const COMMAND_RPC_GHOST_DEPLOY_CONTRACT::request& req, COMMAND_RPC_GHOST_DEPLOY_CONTRACT::response& res, epee::json_rpc::error& error_resp, const connection_context *ctx = NULL);
+    bool on_ghost_call_contract(const COMMAND_RPC_GHOST_CALL_CONTRACT::request& req, COMMAND_RPC_GHOST_CALL_CONTRACT::response& res, epee::json_rpc::error& error_resp, const connection_context *ctx = NULL);
+    bool on_ghost_get_balance(const COMMAND_RPC_GHOST_GET_BALANCE::request& req, COMMAND_RPC_GHOST_GET_BALANCE::response& res, epee::json_rpc::error& error_resp, const connection_context *ctx = NULL);
 
 private:
     bool check_core_busy();

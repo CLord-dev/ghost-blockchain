@@ -3969,3 +3969,33 @@ namespace cryptonote
     , DEFAULT_RPC_SOFT_LIMIT_SIZE
   };
 }  // namespace cryptonote
+
+//------------------------------------------------------------------------------------------------------------------------------
+// Ghost Contract RPC Handlers
+//------------------------------------------------------------------------------------------------------------------------------
+namespace cryptonote
+{
+  bool core_rpc_server::on_ghost_deploy_contract(const COMMAND_RPC_GHOST_DEPLOY_CONTRACT::request& req, COMMAND_RPC_GHOST_DEPLOY_CONTRACT::response& res, epee::json_rpc::error& error_resp, const connection_context *ctx)
+  {
+    // TODO: integrate ghost_contract_engine
+    res.contract_address = "G" + req.sender.substr(0, 38);
+    res.status = CORE_RPC_STATUS_OK;
+    return true;
+  }
+
+  bool core_rpc_server::on_ghost_call_contract(const COMMAND_RPC_GHOST_CALL_CONTRACT::request& req, COMMAND_RPC_GHOST_CALL_CONTRACT::response& res, epee::json_rpc::error& error_resp, const connection_context *ctx)
+  {
+    // TODO: integrate ghost_contract_engine
+    res.result = "";
+    res.status = CORE_RPC_STATUS_OK;
+    return true;
+  }
+
+  bool core_rpc_server::on_ghost_get_balance(const COMMAND_RPC_GHOST_GET_BALANCE::request& req, COMMAND_RPC_GHOST_GET_BALANCE::response& res, epee::json_rpc::error& error_resp, const connection_context *ctx)
+  {
+    // TODO: integrate ghost_contract_engine
+    res.balance = 0;
+    res.status = CORE_RPC_STATUS_OK;
+    return true;
+  }
+}
