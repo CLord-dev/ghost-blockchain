@@ -1,9 +1,13 @@
 set(ghost_contracts_sources
   ghost_contract_engine.cpp
+  grc20.cpp
+  gusdt.cpp
 )
 
 set(ghost_contracts_headers
   ghost_contract_engine.h
+  grc20.h
+  gusdt.h
 )
 
 add_library(ghost_contracts
